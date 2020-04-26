@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'quiz_brain.dart';
+
+QuizBrain quizBrain = QuizBrain();
 
 void main() => runApp(QuizUp());
 
@@ -27,16 +30,9 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Icon> scoreKeeper = [
-    Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
-  ];
+  List<Icon> scoreKeeper = [];
+
+  int questionNo = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +47,7 @@ class _QuizPageState extends State<QuizPage> {
               padding: const EdgeInsets.all(10.0),
               child: Center(
                 child: Text(
-                  'Your question will go here!',
+                  quizBrain.questionBank[questionNo].questionText,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 25.0, color: Colors.white),
                 ),
@@ -64,12 +60,14 @@ class _QuizPageState extends State<QuizPage> {
               child: FlatButton(
                 onPressed: () {
                   setState(() {
-                    scoreKeeper.add(
-                      Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    );
+                    bool correctAnswer =
+                        quizBrain.questionBank[questionNo].questionAnswer;
+                    if (correctAnswer == true) {
+                      print('right');
+                    } else {
+                      print('wrong');
+                    }
+                    questionNo++;
                   });
                 },
                 child: Text(
@@ -87,7 +85,18 @@ class _QuizPageState extends State<QuizPage> {
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    bool correctAnswer =
+                        quizBrain.questionBank[questionNo].questionAnswer;
+                    if (correctAnswer == false) {
+                      print('right');
+                    } else {
+                      print('wrong');
+                    }
+                    questionNo++;
+                  });
+                },
                 child: Text(
                   'False',
                   style: TextStyle(
