@@ -102,6 +102,9 @@ class _QuizPageState extends State<QuizPage> {
                   ),
                 ),
                 color: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
               ),
             ),
           ),
@@ -120,6 +123,9 @@ class _QuizPageState extends State<QuizPage> {
                   ),
                 ),
                 color: Colors.redAccent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
               ),
             ),
           ),
