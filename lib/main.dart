@@ -40,19 +40,8 @@ class _QuizPageState extends State<QuizPage> {
       if (quizBrain.isFinished() == true) {
         Alert(
           context: context,
-          type: AlertType.success,
-          title: "Quiz is Over!",
-          desc: "We have reached the end of the quiz.",
-          buttons: [
-            DialogButton(
-              child: Text(
-                "OK",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-              onPressed: () => Navigator.pop(context),
-              width: 120,
-            )
-          ],
+          title: 'Finished!',
+          desc: 'You\'ve reached the end of the quiz.',
         ).show();
         quizBrain.resetQuestionNo();
         scoreKeeper = [];
@@ -68,7 +57,7 @@ class _QuizPageState extends State<QuizPage> {
           scoreKeeper.add(
             Icon(
               Icons.close,
-              color: Colors.red,
+              color: Colors.redAccent,
             ),
           );
         }

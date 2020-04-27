@@ -46,7 +46,7 @@ class QuizBrain {
   }
 
   bool isFinished() {
-    if (_questionNo == _questionBank.length - 1) {
+    if (_questionNo >= _questionBank.length - 1) {
       return true;
     } else {
       return false;
